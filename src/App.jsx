@@ -16,6 +16,8 @@ width:100%;
 
 const VehicleContainer = styled.div`
 display:flex;
+align-items:center;
+justify-content:center;
 width:100%;
 flex-wrap:wrap;
 `
