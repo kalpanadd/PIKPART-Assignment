@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 const Header = styled.div`
 width:100%;
 height:8vh;
@@ -15,9 +15,9 @@ padding-bottom:5px;
 function HeaderComponent() {
     return (
         <Header>
-            <span style={{ fontSize: "3em" }}>
+            <Link to="/"> <span style={{ fontSize: "3em", color: "wheat" }}>
                 <i class="fas fa-motorcycle"></i>
-            </span>
+            </span></Link>
 
             <h3>explore vehicles here</h3>
         </Header>

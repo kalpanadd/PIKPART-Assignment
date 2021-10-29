@@ -27,7 +27,6 @@ function Form() {
     }
     return (
         <FormContainer>
-            <CardContainer />
             <FormBox>
                 <form onSubmit={(e) => submitHandler(e)}>
 

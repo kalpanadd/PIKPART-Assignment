@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
-
 
 const Card = styled.div`
 width:20%;
@@ -45,15 +44,6 @@ cursor:pointer;
 
 
 function CardContainer({ vehicleBrandId, name, vehicleType, engineCcId, relevance, imageUrl }) {
-    function handleClick() {
-        return {
-            vehicleBrandId,
-            name,
-            vehicleType,
-            engineCcId,
-            relevance, imageUrl
-        }
-    }
 
     return (
         <Card>
