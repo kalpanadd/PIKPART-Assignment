@@ -60,7 +60,7 @@ function App() {
 
                 )
                 :
-                <h1>Loading.....</h1>}
+                <h1>Loading.......</h1>}
             </VehicleContainer>
           </Route>
           <Route path='/update' exact>
