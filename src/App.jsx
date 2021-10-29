@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import styled from 'styled-components';
-
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Form from './Components/Form/Form';
 import HeaderComponent from './Components/Header/Header';
 import CardContainer from './Components/Card/Card';
 
@@ -37,27 +38,36 @@ function App() {
   }, [])
   console.log(results);
   return (
-    <Container>
-      <HeaderComponent />
-      <VehicleContainer>
-        {results ?
-          results.map((each) =>
-            <CardContainer
-              key={each.id}
-              vehicleBrandId={each.vehicleBrandId}
-              name={each.name}
-              vehicleType={each.vehicleType}
-              engineCcId={each.engineCcId}
-              relevance={each.relevance}
-              imageUrl={each.imageUrl}
-            />
+    <BrowserRouter>
 
-          )
-          :
-          "no"}
-      </VehicleContainer>
+      <Container>
+        <HeaderComponent />
+        <Switch>
+          <Route path='/' exact>
+            <VehicleContainer>
+              {results ?
+                results.map((each) =>
+                  <CardContainer
+                    key={each.id}
+                    vehicleBrandId={each.vehicleBrandId}
+                    name={each.name}
+                    vehicleType={each.vehicleType}
+                    engineCcId={each.engineCcId}
+                    relevance={each.relevance}
+                    imageUrl={each.imageUrl}
+                  />
 
-    </Container>
+                )
+                :
+                <h1>Loading.....</h1>}
+            </VehicleContainer>
+          </Route>
+          <Route path='/update' exact>
+            <Form />
+          </Route>
+        </Switch>
+      </Container>
+    </BrowserRouter>
   );
 }
 

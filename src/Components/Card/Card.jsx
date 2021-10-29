@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
-
 
 
 const Card = styled.div`
@@ -33,7 +33,7 @@ justify-content:center;
 `
 const SubmitButton = styled.button`
 padding:8px;
-width:50%;
+width:150%;
 border-radius:5px;
 margin-top:30px;
 outline:none;
@@ -41,22 +41,37 @@ box-shadow:4px 4px 20px black;
 cursor:pointer;
 `
 
+
+
+
 function CardContainer({ vehicleBrandId, name, vehicleType, engineCcId, relevance, imageUrl }) {
+    function handleClick() {
+        return {
+            vehicleBrandId,
+            name,
+            vehicleType,
+            engineCcId,
+            relevance, imageUrl
+        }
+    }
+
     return (
         <Card>
             {imageUrl == null ? <NotImg><h4>Image Not available you can uplaod</h4></NotImg>
                 : <Img src={imageUrl} alt="image" />}
             <CardContent>
 
-                <span>Vehicle Brand Id:{vehicleBrandId}</span>
-                <span>Name:{name}</span>
-                <span>Vehicle Type:{vehicleType}</span>
-                <span>Engine CCID:{engineCcId}</span>
-                <span>relevance:{relevance}</span>
+                <span><b>Vehicle Brand Id:</b>{vehicleBrandId}</span>
+                <span><b>Name:</b>{name}</span>
+                <span><b>Vehicle Type:</b>{vehicleType}</span>
+                <span><b>Engine CCID:</b>{engineCcId}</span>
+                <span><b>relevance:</b>{relevance}</span>
             </CardContent>
 
             <BtnDiv>
-                <SubmitButton>Submit</SubmitButton>
+                <Link to='/update'>
+                    <SubmitButton>Submit</SubmitButton>
+                </Link>
             </BtnDiv>
         </Card>
 
