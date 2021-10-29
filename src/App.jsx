@@ -1,6 +1,6 @@
-// import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-// import axios from 'axios';
+import axios from 'axios';
 import styled from 'styled-components';
 
 import HeaderComponent from './Components/Header/Header';
@@ -14,25 +14,47 @@ flex-wrap:wrap;
 width:100%;
 `
 
+const VehicleContainer = styled.div`
+display:flex;
+width:100%;
+flex-wrap:wrap;
+`
 
 function App() {
-  // const [results, setResults] = useState();
+  const [results, setResults] = useState();
 
+  useEffect(async () => {
+    const res = await axios.get("https://devapi.pikpart.com/api/vehicle/models");
+    const { data } = res.data;
+    console.log(data);
+    if (data) {
+      setResults(data);
+      // console.log("data:", results);
+    }
 
-  // useEffect(async () => {
-  //   const res = await axios.get("https://devapi.pikpart.com/api/vehicle/models");
-  //   console.log(res.data);
-  //   if (res) {
-  //     setResults(res.data);
-  //     console.log(results);
-  //   }
-
-
-  // }, [])
+  }, [])
+  console.log(results);
   return (
     <Container>
       <HeaderComponent />
-      <CardContainer />
+      <VehicleContainer>
+        {results ?
+          results.map((each) =>
+            <CardContainer
+              key={each.id}
+              vehicleBrandId={each.vehicleBrandId}
+              name={each.name}
+              vehicleType={each.vehicleType}
+              engineCcId={each.engineCcId}
+              relevance={each.relevance}
+              imageUrl={each.imageUrl}
+            />
+
+          )
+          :
+          "no"}
+      </VehicleContainer>
+
     </Container>
   );
 }

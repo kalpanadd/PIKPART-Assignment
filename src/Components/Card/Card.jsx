@@ -1,22 +1,14 @@
 import React from 'react'
 import styled from "styled-components";
 
-const VehicleContainer = styled.div`
-display:flex;
-align-items:center;
-justify-content:center;
-flex-wrap:wrap;
-height:92vh;
-width:100%;
-display:flex;
-align-items:centr;
-`
+
 
 const Card = styled.div`
+width:20%;
+height:50vh;
 display:flex;
 flex-direction:column;
-width:25%;
-height:70%;
+justify-content:center;
 border:2px solid black;
 border-radius:8px;
 padding:10px;
@@ -24,101 +16,45 @@ box-shadow:5px 5px 20px black;
 margin:20px;
 `
 const Img = styled.img`
-width:100%;
-height:80%;
 `
-export default function CardContainer() {
+const CardContent = styled.div`
+display:flex;
+flex-direction:column;
+`
+const BtnDiv = styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
+`
+const SubmitButton = styled.button`
+padding:8px;
+width:50%;
+border-radius:5px;
+margin-top:30px;
+outline:none;
+box-shadow:4px 4px 20px black;
+cursor:pointer;
+
+`
+
+function CardContainer({ vehicleBrandId, name, vehicleType, engineCcId, relevance, imageUrl }) {
     return (
-        <VehicleContainer>
-            <Card>
-                <Img src={""} alt="image" />
+        <Card>
+            <Img src={imageUrl ? imageUrl : ""} alt="image" />
+            <CardContent>
+                <span>Vehicle Brand Id:{vehicleBrandId}</span>
+                <span>Name:{name}</span>
+                <span>Vehicle Type:{vehicleType}</span>
+                <span>Engine CCID:{engineCcId}</span>
+            </CardContent>
 
-                <span>Vehicle Brand Id:</span>
-                <span>Name:</span>
-                <span>Vehicle Type:</span>
-                <span>Engine CCID:</span>
+            <BtnDiv>
+                <SubmitButton>Submit</SubmitButton>
+            </BtnDiv>
+        </Card>
 
-            </Card>
 
-            <Card>
-                <Img src={""} alt="image" />
-
-                <span>Vehicle Brand Id:</span>
-                <span>Name:</span>
-                <span>Vehicle Type:</span>
-                <span>Engine CCID:</span>
-
-            </Card>
-
-            <Card>
-                <Img src={""} alt="image" />
-
-                <span>Vehicle Brand Id:</span>
-                <span>Name:</span>
-                <span>Vehicle Type:</span>
-                <span>Engine CCID:</span>
-
-            </Card>
-
-            <Card>
-                <Img src={""} alt="image" />
-
-                <span>Vehicle Brand Id:</span>
-                <span>Name:</span>
-                <span>Vehicle Type:</span>
-                <span>Engine CCID:</span>
-
-            </Card>
-
-            <Card>
-                <Img src={""} alt="image" />
-
-                <span>Vehicle Brand Id:</span>
-                <span>Name:</span>
-                <span>Vehicle Type:</span>
-                <span>Engine CCID:</span>
-
-            </Card>
-
-            <Card>
-                <Img src={""} alt="image" />
-
-                <span>Vehicle Brand Id:</span>
-                <span>Name:</span>
-                <span>Vehicle Type:</span>
-                <span>Engine CCID:</span>
-
-            </Card>
-
-            <Card>
-                <Img src={""} alt="image" />
-
-                <span>Vehicle Brand Id:</span>
-                <span>Name:</span>
-                <span>Vehicle Type:</span>
-                <span>Engine CCID:</span>
-
-            </Card>
-
-            <Card>
-                <Img src={""} alt="image" />
-
-                <span>Vehicle Brand Id:</span>
-                <span>Name:</span>
-                <span>Vehicle Type:</span>
-                <span>Engine CCID:</span>
-
-            </Card>
-
-            <Card>
-                <Img src={""} alt="image" />
-
-                <span>Vehicle Brand Id:</span>
-                <span>Name:</span>
-                <span>Vehicle Type:</span>
-                <span>Engine CCID:</span>
-
-            </Card>
-        </VehicleContainer>
     )
 }
+
+export default CardContainer;
